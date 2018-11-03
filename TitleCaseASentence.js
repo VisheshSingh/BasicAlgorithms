@@ -15,4 +15,14 @@ function titleCase(str) {
   return str;
 }
 
+// method
+function titleCase2(str) {
+  return str
+    .toLowerCase()
+    .split(" ")
+    .map(word => word[0].toUpperCase() + word.substr(1))
+    .join(" ");
+}
+
 console.log(titleCase("I'm a little tea pot"));
+console.log(titleCase2("I'm a little tea pot"));
