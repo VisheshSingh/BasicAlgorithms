@@ -1,0 +1,65 @@
+Problem Statement: Given a positive integer n, construct a nXn spiral matrix.
+-- Example: For n=2
+spiralMatrix(2) will print 
+[[1,2],
+[3,4]]
+
+-- Example: For n=3
+spiralMatrix(3) will print 
+[[1, 2, 3],
+[8, 9, 4],
+[7, 6, 5]]
+=====================================================================
+function spiralMatrix(n) {
+  let results = []
+  
+  // Formulate the number of rows
+  for(let i = 0;i < n; i++) {
+    results.push([]);
+  }
+  
+  let counter = 1;
+  let startRow = 0;
+  let endRow = n - 1;
+  let startCol = 0;
+  let endCol = n - 1;
+  
+  while(startRow <= endRow && startCol <= endCol) {
+    
+    // Fill in first row
+    for(let i=startRow; i<= endCol; i++) {
+     // console.log('startrow', startRow)
+      results[startRow][i] = counter;
+      counter++;
+    }
+    startRow++;
+    
+    // Fill in right row
+    for(let i=startRow; i<=endRow; i++) {
+      //console.log('SR', startRow);
+      //console.log('endCol', endCol);
+      results[i][endCol] = counter;
+      //console.log(results);
+      counter++
+    }
+    endCol--;
+    
+    // Fill in last row
+    for(let i=endCol; i>= startCol; i--) {
+      results[endRow][i] = counter;
+      counter++;
+    }
+    endRow--;
+    
+    for(let i=endRow; i>= startRow; i--) {
+      results[i][startCol] = counter;
+      counter++;
+    }
+    startCol++;
+    
+  }
+  
+  console.log(results);
+}
+
+spiralMatrix(4);
